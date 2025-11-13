@@ -1,0 +1,52 @@
+! Title: Console Queen Filter
+! Description: Restores user power, removes annoyances, and blocks dark patterns. For the sovereign user.
+! Version: 1.0
+! Author: [Your Sovereign Name Here]
+! Last modified: 2024
+
+! --- SECTION 1: RESTORE USER POWER --- !
+! Re-enable right-click (context menu)
+##[oncontextmenu*="return false"]
+##[oncontextmenu*="event.preventDefault()"]
+##style[type*="contextmenu"]
+
+! Re-enable text selection
+##[onselectstart*="return false"]
+##style[type*="user-select: none"]
+
+! Re-enable drag & drop for images and links
+##[ondragstart*="return false"]
+##[ondrag*="return false"]
+
+! --- SECTION 2: ELIMINATE ANNOYANCES --- !
+! Block generic cookie consent overlays (catches many)
+##.cookie-banner
+##.cookie-consent
+##.gdpr-banner
+##.cc-banner
+
+! Block "Open in App" and "Download our App" nags
+##.app-banner
+##.open-in-app
+##.download-app
+
+! Block newsletter sign-up popups and beg-walls
+##.newsletter-popup
+##.email-signup
+##.paywall
+##.subscribe-overlay
+
+! --- SECTION 3: NEUTRALIZE TRACKING & DARK PATTERNS --- !
+! Block exit-intent popups
+##.exit-intent
+##.exit-popup
+
+! Block "Are you sure you want to leave?" confirmations
+##script:has-text(beforeunload)
+##script:has-text(return.*unsaved)
+
+! --- SECTION 4: SITE-SPECIFIC FIXES (The Royal Guard) --- !
+! Example: Fix for sites that hide content
+youtube.com##.ytd-consent-bump-v2-renderer
+twitter.com##.css-1dbjc4n.r-1j3t67a.r-1q9bdsx
+instagram.com##div[role="presentation"]
